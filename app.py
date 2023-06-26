@@ -5,17 +5,19 @@ import mysql.connector
 from mysql.connector import Error
 
 def create_connection():
-    try:
-        myDb = mysql.connector.connect(
-            host='localhost',
-            database='batch10_ai_project',
-            user='root',
-            password='12345'
-        )
-        return myDb
-    except Error as e:
-        st.error(f"Error connecting to MySQL database: {e}")
-        return None
+    myDb=st.experimental_connection('mysql',type='sql')
+#     try:
+#         myDb = mysql.connector.connect(
+#             host='localhost',
+#             database='batch10_ai_project',
+#             user='root',
+#             password='12345'
+#         )
+#         return myDb
+#     except Error as e:
+#         st.error(f"Error connecting to MySQL database: {e}")
+#         return None
+
 
 def insert_image(img_name, image_path, myDb):
     try:
